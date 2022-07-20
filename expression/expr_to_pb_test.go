@@ -546,6 +546,10 @@ func TestExprPushDownToFlash(t *testing.T) {
 	require.NoError(t, err)
 	exprs = append(exprs, function)
 
+	function, err = NewFunction(mock.NewContext(), ast.And, types.NewFieldType(mysql.TypeLonglong), intColumn, intColumn)
+	require.NoError(t, err)
+	exprs = append(exprs, function)
+
 	function, err = NewFunction(mock.NewContext(), ast.Xor, types.NewFieldType(mysql.TypeLonglong), intColumn, intColumn)
 	require.NoError(t, err)
 	exprs = append(exprs, function)
